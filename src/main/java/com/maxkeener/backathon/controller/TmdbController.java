@@ -1,14 +1,12 @@
-package com.maxkeener.backathon.constant;
+package com.maxkeener.backathon.controller;
 
 import com.maxkeener.backathon.apis.Tmdb;
-import com.maxkeener.backathon.model.tmdb.Person;
+import com.maxkeener.backathon.model.tmdb.PopularPerson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,9 +20,9 @@ import java.util.List;
 public class TmdbController {
 
     @RequestMapping("/tmdb/person")
-    public ResponseEntity<Person> getPersonByName(@RequestParam(value = "name", required = true) String name) {
+    public ResponseEntity<PopularPerson> getPersonByName(@RequestParam(value = "name", required = true) String name) {
         Tmdb tmdb = new Tmdb();
-        List<Person> searchResults = tmdb.searchPerson(name);
-        return new ResponseEntity<Person>(searchResults.get(0), HttpStatus.OK);
+        PopularPerson result = tmdb.searchPersonMinPopularity(name);
+        return new ResponseEntity<PopularPerson>(result, HttpStatus.OK);
     }
 }

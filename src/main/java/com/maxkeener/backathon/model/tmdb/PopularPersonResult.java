@@ -11,9 +11,9 @@ import java.util.List;
  * Time: 1:31 PM
  * To change this template use File | Settings | File Templates.
  */
-public class SearchPersonResult {
+public class PopularPersonResult {
     private Integer page;
-    private List<Person> results;
+    private List<PopularPerson> results;
     @JsonProperty("total_pages")
     private Integer totalPages;
     @JsonProperty("total_results")
@@ -27,11 +27,11 @@ public class SearchPersonResult {
         this.page = page;
     }
 
-    public List<Person> getResults() {
+    public List<PopularPerson> getResults() {
         return results;
     }
 
-    public void setResults(List<Person> results) {
+    public void setResults(List<PopularPerson> results) {
         this.results = results;
     }
 

@@ -1,6 +1,9 @@
 package com.maxkeener.backathon.model.tmdb;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,13 +12,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Time: 1:18 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Person {
-    Boolean adult;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PopularPerson {
     Integer id;
     String name;
-    Double popularity;
+    @JsonProperty("known_for")
+    List<KnownFor> knownFors;
     @JsonProperty("profile_path")
     String profilePath;
+
+    public List<KnownFor> getKnownFors() {
+        return knownFors;
+    }
+
+    public void setKnownFors(List<KnownFor> knownFors) {
+        this.knownFors = knownFors;
+    }
 
     public String getProfilePath() {
         return profilePath;
@@ -23,14 +35,6 @@ public class Person {
 
     public void setProfilePath(String profilePath) {
         this.profilePath = profilePath;
-    }
-
-    public Boolean getAdult() {
-        return adult;
-    }
-
-    public void setAdult(Boolean adult) {
-        this.adult = adult;
     }
 
     public Integer getId() {
@@ -47,14 +51,6 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Double getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(Double popularity) {
-        this.popularity = popularity;
     }
 
 
